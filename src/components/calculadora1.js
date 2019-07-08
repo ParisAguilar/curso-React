@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as math from 'mathjs';
 
 export default class Calculadora1 extends Component {
     constructor(props) {
@@ -25,9 +26,10 @@ export default class Calculadora1 extends Component {
     testFn() {
         console.log("TEST");
     }
-    addDisplay (number) {
-        //this.setState({display: this.state.display + number})
-        console.log(number);
+    addDisplay (caracter) {
+        this.setState({display: this.state.display + caracter})
+
+        console.log(caracter);
     }
     componentDidMount() {
         console.log("componentDidMount");
@@ -35,8 +37,12 @@ export default class Calculadora1 extends Component {
     }
     componentWillMount() {
         console.log("componentWillMount");
+       
     }
-    
+    operacion(){
+console.log(math.evaluate(this.state.display));
+
+    }
     render() {
         let display = this.state.display;
         return (
@@ -45,7 +51,7 @@ export default class Calculadora1 extends Component {
                 <div className="field">
                     <div className="control">
                         <div style={{ width: '200px' }} >
-                            <input readOnly className="input is-rounded" type="text" placeholder="Rounded input" value={display} />
+                            <input  readOnly className="input is-rounded" type="text" placeholder="Rounded input" value={display} />
                         </div>
 
                     </div>
@@ -59,7 +65,7 @@ export default class Calculadora1 extends Component {
                             <i className="fas fa-heading"></i>
                         </span>
                     </button>
-                    <button className="button is-primary" onClick={console.log(8)}>
+                    <button className="button is-primary" onClick={(e)=>this.addDisplay(8)}>
                         8
                         <span className="icon is-small">
                             <i className="fas fa-heading"></i>
@@ -101,6 +107,24 @@ export default class Calculadora1 extends Component {
                     </button>
                     <button className="button is-primary">
                         3
+                        <span className="icon is-small">
+                            <i className="fas fa-heading"></i>
+                        </span>
+                    </button>
+                </p>
+                <p className="buttons is-primary">
+                    <button className="button is-primary" onClick={(e)=>this.addDisplay('+')}>+
+  <span className="icon is-small">
+                            <i className="fas fa-heading"></i>
+                        </span>
+                    </button>
+                    <button  className="button is-primary" onClick={(e)=>this.addDisplay('-')}>-
+  <span className="icon is-small">
+                            <i className="fas fa-heading"></i>
+                        </span>
+                    </button>
+                    <button className="button is-primary" onClick={(e)=>this.operacion()}>
+                        =
                         <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>

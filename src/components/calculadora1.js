@@ -9,7 +9,7 @@ export default class Calculadora1 extends Component {
         this.state = {
             nombre: 'nombre',
             numero: this.props.number,
-            display: localStorage.getItem("display")
+            display: ''
         }
     }
     decrementa() {
@@ -22,6 +22,13 @@ export default class Calculadora1 extends Component {
             numero: this.state.numero + this.state.numero
         });
     }
+    testFn() {
+        console.log("TEST");
+    }
+    addDisplay (number) {
+        //this.setState({display: this.state.display + number})
+        console.log(number);
+    }
     componentDidMount() {
         console.log("componentDidMount");
         console.log(this);
@@ -29,6 +36,7 @@ export default class Calculadora1 extends Component {
     componentWillMount() {
         console.log("componentWillMount");
     }
+    
     render() {
         let display = this.state.display;
         return (
@@ -42,61 +50,61 @@ export default class Calculadora1 extends Component {
 
                     </div>
                 </div>
-                <button onClick={console.log("OK")}>TEST</button>
+                <button onClick={this.testFn.bind(this)}>TEST</button>
 
                 <p className="buttons is-primary">
-                    <button className="button is-primary">
+                    <button className="button is-primary" onClick={(e)=>this.addDisplay(7)}>
                         7
                         <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>
                     </button>
-                    <a className="button is-primary" onClick={console.log(8)}>
+                    <button className="button is-primary" onClick={console.log(8)}>
                         8
                         <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>
-                    </a>
-                    <a className="button is-primary">9
-  <span className="icon is-small">
+                    </button>
+                    <button className="button is-primary">9
+                    <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>
-                    </a>
+                    </button>
                 </p>
                 <p className="buttons is-primary">
-                    <a href="#" className="button is-primary">4
+                    <button href="#" className="button is-primary">4
                         <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>
-                    </a>
-                    <a href="#" className="button is-primary">5
+                    </button>
+                    <button  className="button is-primary">5
   <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>
-                    </a>
-                    <a href="#" className="button is-primary">6
+                    </button>
+                    <button className="button is-primary">6
   <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>
-                    </a>
+                    </button>
                 </p>
                 <p className="buttons is-primary">
-                    <a href="#" className="button is-primary">1
+                    <button className="button is-primary">1
   <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>
-                    </a>
-                    <a href="#" className="button is-primary">2
+                    </button>
+                    <button  className="button is-primary">2
   <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>
-                    </a>
-                    <a href="#" className="button is-primary">
+                    </button>
+                    <button className="button is-primary">
                         3
                         <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>
-                    </a>
+                    </button>
                 </p>
             </div>
         );

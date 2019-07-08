@@ -26,8 +26,8 @@ export default class Calculadora1 extends Component {
     testFn() {
         console.log("TEST");
     }
-    addDisplay (caracter) {
-        this.setState({display: this.state.display + caracter})
+    addDisplay(caracter) {
+        this.setState({ display: this.state.display + caracter })
 
         console.log(caracter);
     }
@@ -37,12 +37,28 @@ export default class Calculadora1 extends Component {
     }
     componentWillMount() {
         console.log("componentWillMount");
-       
-    }
-    operacion(){
-console.log(math.evaluate(this.state.display));
 
     }
+    operacion() {
+        console.log(math.evaluate(this.state.display));
+        this.setState({ display: math.evaluate(this.state.display) })
+
+    }
+    limpia() {
+        console.log(this.state.display);
+        var a = this.state.display.toString();
+
+        console.log("Valor:" + a);
+        console.log("len:" + a.length);
+
+        a = a.substring(0, a.length - 1);
+
+        this.setState({ display: a });
+
+
+
+    }
+
     render() {
         let display = this.state.display;
         return (
@@ -51,86 +67,117 @@ console.log(math.evaluate(this.state.display));
                 <div className="field">
                     <div className="control">
                         <div style={{ width: '200px' }} >
-                            <input  readOnly className="input is-rounded" type="text" placeholder="Rounded input" value={display} />
+                            <input readOnly className="input is-rounded" type="text" placeholder="Rounded input" value={display} />
                         </div>
 
                     </div>
                 </div>
-                <button onClick={this.testFn.bind(this)}>TEST</button>
+
 
                 <p className="buttons is-primary">
-                    <button className="button is-primary" onClick={(e)=>this.addDisplay(7)}>
+                    <button className="button is-primary" onClick={(e) => this.addDisplay(7)}>
                         7
                         <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>
                     </button>
-                    <button className="button is-primary" onClick={(e)=>this.addDisplay(8)}>
+                    <button className="button is-primary" onClick={(e) => this.addDisplay(8)}>
                         8
                         <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>
                     </button>
-                    <button className="button is-primary">9
+                    <button className="button is-primary" onClick={(e) => this.addDisplay(9)}>9
                     <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>
                     </button>
+                    <button className="button is-primary" onClick={(e) => this.addDisplay('+')}>+
+  <span className="icon is-small">
+                            <i className="fas fa-heading"></i>
+                        </span>
+                    </button>
+                    <button className="button is-primary" onClick={(e) => this.limpia()}>C
+  <span className="icon is-small">
+                            <i className="fas fa-heading"></i>
+                        </span>
+                    </button>
                 </p>
                 <p className="buttons is-primary">
-                    <button href="#" className="button is-primary">4
+                    <button href="#" className="button is-primary" onClick={(e) => this.addDisplay(4)}>4
                         <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>
                     </button>
-                    <button  className="button is-primary">5
+                    <button className="button is-primary" onClick={(e) => this.addDisplay(5)}>5
   <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>
                     </button>
-                    <button className="button is-primary">6
+                    <button className="button is-primary" onClick={(e) => this.addDisplay(6)}>6
+  <span className="icon is-small">
+                            <i className="fas fa-heading"></i>
+                        </span>
+                    </button>
+                    <button className="button is-primary" onClick={(e) => this.addDisplay('-')}>-
   <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>
                     </button>
                 </p>
                 <p className="buttons is-primary">
-                    <button className="button is-primary">1
+                    <button className="button is-primary" onClick={(e) => this.addDisplay(1)}>1
   <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>
                     </button>
-                    <button  className="button is-primary">2
+                    <button className="button is-primary" onClick={(e) => this.addDisplay(2)}>2
   <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>
                     </button>
-                    <button className="button is-primary">
+                    <button className="button is-primary" onClick={(e) => this.addDisplay(3)}>
                         3
                         <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>
                     </button>
+                    <button className="button is-primary" onClick={(e) => this.addDisplay('*')}>x
+  <span className="icon is-small">
+                            <i className="fas fa-heading"></i>
+                        </span>
+                    </button>
                 </p>
                 <p className="buttons is-primary">
-                    <button className="button is-primary" onClick={(e)=>this.addDisplay('+')}>+
+
+
+                    <button className="button is-primary" onClick={(e) => this.addDisplay('.')}>.
   <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>
                     </button>
-                    <button  className="button is-primary" onClick={(e)=>this.addDisplay('-')}>-
-  <span className="icon is-small">
+                    <button className="button is-primary" onClick={(e) => this.addDisplay(0)}>
+                        0
+                        <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>
                     </button>
-                    <button className="button is-primary" onClick={(e)=>this.operacion()}>
+
+                    <button className="button is-primary" onClick={(e) => this.operacion()}>
                         =
                         <span className="icon is-small">
                             <i className="fas fa-heading"></i>
                         </span>
                     </button>
+                    <button className="button is-primary" onClick={(e) => this.addDisplay('/')}>/
+  <span className="icon is-small">
+                            <i className="fas fa-heading"></i>
+                        </span>
+                    </button>
                 </p>
             </div>
+
+
         );
     }
 }
